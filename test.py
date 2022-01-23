@@ -19,7 +19,7 @@ def test_connect_node():
 
     assert node_a.connected_nodes[0][0] == node_b
     assert node_a.connected_nodes[0][1] == 5
-    
+
 def test_example_write():
     '''tests write_tgf_file functionality'''
     nodes = read_tgf_file("example.tgf")
