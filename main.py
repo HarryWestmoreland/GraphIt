@@ -24,7 +24,7 @@ class Node:
         node : Node
             the Node you want to connect to this Node
 
-        length : int
+        length : int, Defaults to 1
             the length of the connection
         '''
         self.connected_nodes.append([node, length])
