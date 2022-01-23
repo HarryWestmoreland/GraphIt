@@ -1,0 +1,15 @@
+0 London
+1 Birmingham
+2 Manchester
+3 Liverpool
+4 Newcastle
+5 Edinburgh
+6 Glasgow
+#
+0 1 10
+1 2 8
+1 3 9
+2 3 3
+3 4 20
+4 5 10
+5 6 5
