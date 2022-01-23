@@ -1,5 +1,7 @@
 '''This is a test Module for the Project'''
-from main import read_tgf_file, Node
+import os
+from main import read_tgf_file, write_tgf_file, Node
+
 def test_example_read():
     '''Tests read_tgf_file on an example file'''
     nodes = read_tgf_file("example.tgf")
@@ -7,7 +9,6 @@ def test_example_read():
     assert nodes[1].connected_nodes[0][0].name == "Manchester"
     assert nodes[1].connected_nodes[0][1] == 8
     assert nodes[1].connected_nodes[1][0].name == "Liverpool"
-    assert nodes[1].connected_nodes[1][1] == 9
 
 def test_connect_node():
     '''tests node connection functionality'''
@@ -19,3 +20,13 @@ def test_connect_node():
     assert node_a.connected_nodes[0][0] == node_b
     assert node_a.connected_nodes[0][1] == 5
     
+def test_example_write():
+    '''tests write_tgf_file functionality'''
+    nodes = read_tgf_file("example.tgf")
+    write_tgf_file(nodes,"wroteFile.tgf")
+
+    read_file = open("example.tgf","r",encoding = "UTF-8").read()
+    wrote_file = open("wroteFile.tgf","r",encoding = "UTF-8").read()
+
+    os.remove("wroteFile.tgf")
+    assert read_file == wrote_file

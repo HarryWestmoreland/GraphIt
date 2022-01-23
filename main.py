@@ -1,4 +1,5 @@
 '''This is the main module for the Project'''
+
 class Node:
     '''
     This class models a Node within a Graph
@@ -63,3 +64,32 @@ def read_tgf_file(file_dir):
         nodes[int(edge_info[0])].connect_node(nodes[int(edge_info[1])],int(edge_info[2]))
 
     return nodes
+
+
+def write_tgf_file(nodes, file_dir):
+    '''
+    writes a tgf file from the given nodes into the given file directory
+    Parameters
+    ----------
+    nodes : [Node]
+        set off nodes you want to write to a tgf file
+
+    file_dire : str
+        the name and directory of the tgf file you want to create
+    '''
+    raw_nodes = ""
+
+    for node in nodes:
+        raw_nodes += str(nodes.index(node)) + " " + node.name + "\n"
+
+    raw_nodes += "#"
+
+    for node in nodes:
+        if len(node.connected_nodes) > 0:
+            for connected_node in node.connected_nodes:
+                raw_nodes += ("\n" + str(nodes.index(node)) + " " +
+                str(nodes.index(connected_node[0])) + " " +
+                str(connected_node[1]))
+
+    file = open(file_dir, "x", encoding = "UTF-8")
+    file.write(raw_nodes)
