@@ -15,7 +15,7 @@ class Node:
         self.name = name
         self.connected_nodes = []
 
-    def connect_node(self, node, length):
+    def connect_node(self, node, length = 1):
         '''
         adds node to connected_nodes with the connection length
 
