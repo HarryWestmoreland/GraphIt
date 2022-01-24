@@ -1,6 +1,6 @@
 '''This is a test Module for the Project'''
 import os
-from main import read_tgf_file, write_tgf_file, Node
+from main import read_tgf_file, write_tgf_file, depth_first_search, Node
 
 def test_example_read():
     '''Tests read_tgf_file on an example file'''
@@ -21,7 +21,7 @@ def test_connect_node():
     assert node_a.connected_nodes[0][1] == 5
 
 def test_example_write():
-    '''tests write_tgf_file functionality'''
+    '''tests write_tgf_file()'''
     nodes = read_tgf_file("example.tgf")
     write_tgf_file(nodes,"wroteFile.tgf")
 

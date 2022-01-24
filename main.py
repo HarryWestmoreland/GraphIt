@@ -11,10 +11,14 @@ class Node:
 
     connected_nodes : List[[Node, int]]
         List of Nodes that this Node is connected to and the length of the connection
+
+    Visited : bool
+        weather the node has been visited by a traversal or not
     '''
     def __init__(self, name):
         self.name = name
         self.connected_nodes = []
+        self.visited = False
 
     def connect_node(self, node, length = 1):
         '''
@@ -29,6 +33,7 @@ class Node:
             the length of the connection
         '''
         self.connected_nodes.append([node, length])
+
 
 
 def read_tgf_file(file_dir):
@@ -93,3 +98,20 @@ def write_tgf_file(nodes, file_dir):
 
     file = open(file_dir, "x", encoding = "UTF-8")
     file.write(raw_nodes)
+
+def depth_first_search(node):
+    '''
+    performs a depth first search on the node
+
+    Parameters
+    ----------
+    node : Node
+        node to perform the depth first search on
+    '''
+    if node.visited:
+        return
+
+    node.visited = True
+    print(node.name)
+    for connected_node in node.connected_nodes:
+        depth_first_search(connected_node[0])
