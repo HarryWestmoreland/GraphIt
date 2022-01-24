@@ -1,6 +1,6 @@
 '''This is a test Module for the Project'''
 import os
-from main import read_tgf_file, write_tgf_file, depth_first_search, Node
+from main import read_tgf_file, write_tgf_file, Node
 
 def test_example_read():
     '''Tests read_tgf_file on an example file'''
