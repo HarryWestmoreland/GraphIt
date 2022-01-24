@@ -1,6 +1,6 @@
 '''This is a test Module for the Project'''
 import os
-from main import read_tgf_file, write_tgf_file, Node
+from main import depth_first_search, read_tgf_file, write_tgf_file, Node
 
 def test_example_read():
     '''Tests read_tgf_file on an example file'''
@@ -30,3 +30,8 @@ def test_example_write():
 
     os.remove("wroteFile.tgf")
     assert read_file == wrote_file
+
+def test_depth_first_search():
+    '''tests depth first search against a test file'''
+    nodes = read_tgf_file("traversal.tgf")
+    assert depth_first_search(nodes[0]) == "A B D F E C G"
