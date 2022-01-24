@@ -99,7 +99,7 @@ def write_tgf_file(nodes, file_dir):
     file = open(file_dir, "x", encoding = "UTF-8")
     file.write(raw_nodes)
 
-def depth_first_search(node):
+def depth_first_search(node, log = ""):
     '''
     performs a depth first search on the node
 
@@ -107,11 +107,18 @@ def depth_first_search(node):
     ----------
     node : Node
         node to perform the depth first search on
+
+    log : str
+        the log of the traversal, leave blank on initial call
     '''
     if node.visited:
-        return
+        return log
 
     node.visited = True
-    print(node.name)
+    if len(log) != 0:
+        log += " "
+    log += node.name
     for connected_node in node.connected_nodes:
-        depth_first_search(connected_node[0])
+        log = depth_first_search(connected_node[0],log)
+
+    return log
