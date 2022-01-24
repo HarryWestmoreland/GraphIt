@@ -110,6 +110,11 @@ def depth_first_search(node, log = ""):
 
     log : str
         the log of the traversal, leave blank on initial call
+
+    Returns
+    -------
+    log : str
+        log of the nodes in order visited
     '''
     if node.visited:
         return log
@@ -120,5 +125,38 @@ def depth_first_search(node, log = ""):
     log += node.name
     for connected_node in node.connected_nodes:
         log = depth_first_search(connected_node[0],log)
+
+    return log
+
+def breadth_first_search(node):
+    '''
+    performs a breadth first search on the node
+
+    Parameters
+    ----------
+    node : Node
+        node to perform the breadth first search on
+
+    Returns
+    -------
+    log : str
+        log of the nodes in order visited
+    '''
+    queue = []
+    log = ""
+    node.visited = True
+    queue.append(node)
+
+    while len(queue) > 0:
+        current_node = queue.pop(0)
+
+        if len(log) > 0:
+            log += " "
+        log += current_node.name
+
+        for connected_node in current_node.connected_nodes:
+            if not connected_node[0].visited:
+                connected_node[0].visited = True
+                queue.append(connected_node[0])
 
     return log
