@@ -1,6 +1,6 @@
 '''This is a test Module for the Project'''
 import os
-from main import breadth_first_search, depth_first_search, read_tgf_file, write_tgf_file, Node
+from graph_logic import breadth_first_search, depth_first_search, read_tgf_file, write_tgf_file, Node
 
 def test_example_read():
     '''Tests read_tgf_file on an example file'''
